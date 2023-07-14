@@ -1,0 +1,15 @@
+.footer1 {
+    background-color: rgb(116, 196, 241);
+  margin-top:20px;
+  }
+  .footer1 h1 {
+      color:aliceblue;
+      display:inline-block;
+  }
+  
+  .img {
+       margin-left:500px;
+  }
+  .img img{
+      margin-left:70px;
+  }
