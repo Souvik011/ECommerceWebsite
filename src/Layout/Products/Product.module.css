@@ -1,6 +1,7 @@
 .Items{
-   
-    margin-right: 50px;
+   height: 40vh;
+   width: 30vw;
+    margin: 50px;
 }
 .button{
    background: rgb(13, 201, 226);
@@ -13,13 +14,14 @@ button:active {
   
 .price{
  font-size: larger;
+ 
 }
 .img{
-    box-shadow: 5px 5px 10px #000;
-    height: 300px;
+    
+    height: 160px;
     margin: auto;
     overflow: hidden;
-    width: 300px;
+    width: 350px;
     transition: transform 500ms;
     
 }

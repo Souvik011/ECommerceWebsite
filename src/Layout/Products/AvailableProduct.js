@@ -46,7 +46,7 @@ const AvailableProduct = (props) => {
 
       return (<Fragment>
         <div style={{display:"flex"}}>
-            <ul style={{display:"flex", flexWrap:"wrap" , justifyContent:"center" , alignItems:"center"}}>
+            <ul style={{ display:"flex", flexWrap:"wrap" , justifyContent:"space-around" , alignItems:"center"}}>
             {productsArr.map((item) => {
           return (
             <Products

@@ -1,6 +1,9 @@
 .footer1 {
+    height:"5rem";
+    width:"100%";
     background-color: rgb(116, 196, 241);
-  margin-top:20px;
+    margin:5rem 0rem 1rem 0rem ;
+   
   }
   .footer1 h1 {
       color:aliceblue;
