@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import band from '../Images/band.jpeg';
-import { Card } from "react-bootstrap";
 
 
 const About = () => {
@@ -8,7 +7,7 @@ const About = () => {
                 <div style={{paddingTop:"4rem"}}>
                    
                         <div style={{textAlign:"right", margin:"40px 100px 40px 100px",fontFamily: "Times New Roman"}}>
-                            <img src={band} alt="band image"  style={{float:"right" , margin:"1px 1px 1px 15px"}} />
+                            <img src={band} alt="band "  style={{float:"right" , margin:"1px 1px 1px 15px"}} />
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Donec
           pretium vulputate sapien nec sagittis. Vulputate dignissim suspendisse

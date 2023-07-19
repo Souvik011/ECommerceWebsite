@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 
 const NavBar = (props) => {
-    const [showCart,setShowCart] = useState(false);
+    const [showCart,setShowCart] = useState(true);
     const HideCartHandler = (e) => {
         e.preventDefault();
         setShowCart(false);

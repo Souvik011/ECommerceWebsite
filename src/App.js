@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import './App.css';
-import Cart from './Cart/Cart';
+import CartBox from './Cart/CartBox';
 import Footer from './Layout/Footer';
 import Header from './Layout/Header';
 import Store from './Pages/Store';
@@ -23,10 +23,14 @@ function App() {
 
   console.log(cartVisible);
 
-  return (<div>
+  return (
+  <div>
 
-    {cartVisible && (<Cart onClose={HideCartHandler} />)}
-  
+    <CartBox 
+    show = {cartVisible}
+    onHide = {HideCartHandler} 
+    keyboard = {false}
+    onClose={HideCartHandler} />
     <Header onShowCart = {ShowCartHandler}/>
    
      <Routes>

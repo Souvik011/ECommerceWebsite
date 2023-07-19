@@ -1,42 +1,17 @@
+import { useContext } from "react";
 import Modal from "../Model/Modal";
 import CartItem from "./CartItem";
 import classes from './Cart.module.css';
+import CartContext from "../Store/cart-context";
 
 const Cart = (props) => {
-  const cartElements = [
-    {
-      title: "Colors",
 
-      price: 100,
+  const CartCtx = useContext(CartContext);
+  
+  const cartElements = CartCtx.products ;
+  const totalAmount = CartCtx.totalAmount;
 
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-
-      quantity: 2,
-    },
-
-    {
-      title: "Black and white Colors",
-
-      price: 50,
-
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-
-      quantity: 3,
-    },
-
-    {
-      title: "Yellow and Black Colors",
-
-      price: 70,
-
-      imageUrl:
-        "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-
-      quantity: 1,
-    },
-  ];
+  console.log(cartElements);
 
   const cartItems = (
     <ul className={classes["cart-items"]}>
@@ -53,6 +28,11 @@ const Cart = (props) => {
     </ul>
   );
 
+  const buyHandler = (e) => {
+    e.preventDefault();
+    alert("Items Buyed Successfully.......Remove Your Cart Now");
+  };
+
   return (
     <Modal onClose={props.onClose}>
       <section className={classes.section}>
@@ -66,8 +46,8 @@ const Cart = (props) => {
       <div style={{marginRight:"1rem",display:"grid",justifyContent:"start"}}>
       {cartItems}
       </div>
-      <h2 className={classes.h2}> Total Rs.{0} </h2>
-      <button style={{backgroundColor:"blue",marginLeft:"12rem"}}>BUY</button><button className={classes.button} onClick={props.onClose}>Close</button>
+      <h2 className={classes.h2}> Total Rs. {totalAmount} </h2>
+      <button style={{backgroundColor:"blue",marginLeft:"12rem"}} onClick={buyHandler}>BUY</button><button className={classes.button} onClick={props.onClose}>Close</button>
     </Modal>
   );
 };
