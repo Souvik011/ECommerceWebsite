@@ -1,6 +1,7 @@
 import React, { Fragment, useContext } from "react";
 import classes from "./Product.module.css";
 import CartContext from "../../Store/cart-context";
+import axios from "axios";
 
 
 const Products = (props) => {

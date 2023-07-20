@@ -1,7 +1,8 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment, useContext, useEffect } from "react";
 import { Button, Modal } from "react-bootstrap";
 
 import CartContext from "../Store/cart-context";
+import axios from "axios";
 
 const CartBox = (props) => {
   const CartCtx = useContext(CartContext);
@@ -12,13 +13,72 @@ const CartBox = (props) => {
     alert("You Have Buyed All the Products");
   };
 
-  const cartAdd = (ele) => {
-    CartCtx.addItem({ ...ele, quantity: 1 });
-  };
+  async function cartAdd(ele) {
+    var Formatedemail = localStorage
+      .getItem("email")
+      .replace("@", "")
+      .replace(".", "");
+    let res = await axios.get(
+      `https://crudcrud.com/api/b03b426820ef44799ffc8a24f1a36d21/cart${Formatedemail}`
+    );
+    let data = await res.data;
 
-  const cartRemove = (ele) => {
-    CartCtx.removeItem(ele);
-  };
+    let index = data.findIndex((product) => product.title === ele.title);
+
+    if (index >= 0) {
+      var id = data[index]._id;
+      console.log(id);
+      var quantity = data[index].quantity;
+      axios
+        .put(
+          `https://crudcrud.com/api/b03b426820ef44799ffc8a24f1a36d21/cart${Formatedemail}/${id}`,
+          { ...ele, quantity: quantity + 1 }
+        )
+        .then(() => {
+          CartCtx.addItem({ ...ele, quantity: 1 });
+          console.log("Deleted successfully");
+        });
+    }
+  }
+
+  async function cartRemove(ele) {
+    var Formatedemail = localStorage
+      .getItem("email")
+      .replace("@", "")
+      .replace(".", "");
+    let res = await axios.get(
+      `https://crudcrud.com/api/b03b426820ef44799ffc8a24f1a36d21/cart${Formatedemail}`
+    );
+    let data = await res.data;
+
+    let index = data.findIndex((product) => product.title === ele.title);
+    console.log(index);
+    if (index >= 0) {
+      var id = data[index]._id;
+      console.log(id);
+      var quantity = data[index].quantity;
+    }
+    if (index > -1 && quantity > 1) {
+      axios
+        .put(
+          `https://crudcrud.com/api/b03b426820ef44799ffc8a24f1a36d21/cart${Formatedemail}/${id}`,
+          { ...ele, quantity: quantity - 1 }
+        )
+        .then(() => {
+          CartCtx.removeItem(ele);
+          console.log("Deleted successfully");
+        });
+    } else {
+      axios
+        .delete(
+          `https://crudcrud.com/api/b03b426820ef44799ffc8a24f1a36d21/cart${Formatedemail}/${id}`
+        )
+        .then((res) => {
+          CartCtx.removeItem(ele);
+          console.log("Deleted successfully");
+        });
+    }
+  }
 
   return (
     <Fragment>
